@@ -83,7 +83,7 @@ df = df.drop_duplicates()
 df = df.sort_values(by=['Regione', 'Data Pubblicazione'])
 
 # Save to CSV
-output_path = '/Users/alfonsocalvanese/PyCharm Projects/ParserLeggi/output_def2.csv'
+output_path = '/Users/alfonsocalvanese/PyCharm Projects/ParserLeggi/output_def.csv'
 df.to_csv(output_path, index=False)
 
 print(f"Data extracted and saved to {output_path}")
