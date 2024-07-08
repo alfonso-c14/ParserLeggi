@@ -1,9 +1,10 @@
+'''
 import os
 from bs4 import BeautifulSoup
 import time
 
 # Define the directory containing the HTML files
-base_dir = "/Users/alfonsocalvanese/PyCharm Projects/ParserLeggi/RegionalLaws/"
+base_dir = "/Users/alfonsocalvanese/PyCharm Projects/ParserLeggi/RegionalLaws_2/"
 
 # Variable to store the count of elements
 total_count = 0
@@ -30,7 +31,7 @@ time.sleep(0.1)
 
 print(f"Total number of elements with class 'atto': {total_count}")
 '''
-
+'''
 import pandas as pd
 
 # Load the CSV file into a DataFrame
@@ -67,3 +68,25 @@ print(duplicates)
 # Optionally, save the duplicates to a new CSV file
 duplicates.to_csv('/Users/alfonsocalvanese/PyCharm Projects/ParserLeggi/duplicates.csv', index=False)
 '''
+
+import os
+from bs4 import BeautifulSoup
+
+# Directory containing the HTML files
+directory_path = '/Users/alfonsocalvanese/PyCharm Projects/ParserLeggi/Leggi/1973'
+
+# Text to search for
+search_text = "Bilancio di Previsione della Regione per l' esercizio finanziario dell' anno 1973."
+
+def search_text_in_html(file_path, search_text):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        soup = BeautifulSoup(file, 'html.parser')
+        if search_text in soup.get_text():
+            print(f"Found '{search_text}' in {file_path}")
+
+# Iterate over all files in the directory
+for root, dirs, files in os.walk(directory_path):
+    for file in files:
+        if file.endswith('.html'):
+            file_path = os.path.join(root, file)
+            search_text_in_html(file_path, search_text)
